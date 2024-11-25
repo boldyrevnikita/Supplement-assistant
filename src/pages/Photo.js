@@ -190,7 +190,7 @@ const Photo = () => {
     const scaler = 1024000 / approxSize
     console.log("LANG ", lang)
     resizeBase64Img(dataUri, scaler * dimensions.w, scaler * dimensions.h).then((result)=>{
-        postData('http://127.0.0.1:5000/process_image', {"base64Image": result, "language": optionsLang[lang]}).then((data) => {
+        postData('https://nikitaboldyrev.pythonanywhere.com/process_image', {"base64Image": result, "language": optionsLang[lang]}).then((data) => {
             let text = data['ParsedResults'][0]['ParsedText'].toLowerCase()
             const regex = /\r\n|\r|\n|[.]/;
             const ar_message = text.split(regex)
